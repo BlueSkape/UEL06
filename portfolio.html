@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur mon portfolio</h1>
+    </header>
+    <section>
+        <h2>Je me prénomme Jeremy, j'ai 19 ans</h2>
+        <p>Je vis à Madagascar et plus précisément à Tananarive. J'ai toujours aimé l'informatique dans toutes ses formes depuis tout petit, je me suis intéressé à la programmation, à la création de contenue et au développement depuis longtemps déjà, je suis aussi passionné occasionnellement par la physique, la robotique, la mécanique et l'électronique. J'aime le piano, j'ai commencé à faire du tennis et j'aime les jeux vidéos.
+</p>
+    </section>
+    <section>
+        <h2>Liens utiles</h2>
+        <ul>
+            <li><a href="https://github.com/BlueSkape" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+    <button id="getJoke">Get a Joke</button>
+  <div id="joke"></div>
+
+  <script>
+    document.getElementById("getJoke").addEventListener("click", function() {
+      const url = "https://official-joke-api.appspot.com/random_joke";
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("joke").innerHTML = `
+            <p>${data.setup}</p>
+            <p><strong>${data.punchline}</strong></p>
+          `;
+        })
+        .catch(error => console.error("Error fetching the API:", error));
+    });
+  </script>
+</body>
+</html>
